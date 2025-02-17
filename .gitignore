@@ -116,3 +116,4 @@ nb-configuration.xml
 ## Miscellaneous
 ##############################
 *.log
+/Tareas/Tarea_1/nbproject/private/
