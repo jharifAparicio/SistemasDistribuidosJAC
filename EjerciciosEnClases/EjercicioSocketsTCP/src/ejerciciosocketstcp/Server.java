@@ -15,7 +15,7 @@ import java.net.Socket;
  *
  * @author Dell
  */
-public class ServerHolaMundo {
+public class Server {
 
     public static String reverseInputString(String myString) {
 

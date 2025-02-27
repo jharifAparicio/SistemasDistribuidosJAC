@@ -15,7 +15,7 @@ import java.util.Scanner;
  *
  * @author Dell
  */
-public class ClienteHolaMundo {
+public class Client {
      public static void main(String[] args) {
         // TODO code application logic here
         Scanner sc = new Scanner(System.in);
