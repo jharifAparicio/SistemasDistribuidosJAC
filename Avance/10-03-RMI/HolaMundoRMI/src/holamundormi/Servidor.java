@@ -21,14 +21,10 @@ public class Servidor {
         //dentro del try-catch para capturar errores
         try {
             Hola hola = new Hola();
-            LocateRegistry.createRegistry(1099); // puerto en el que se levanta el puerot del rmi
+            LocateRegistry.createRegistry(1099); // puerto en el que se levanta el rmi
             Naming.bind("Hola",hola);
             
-        } catch (RemoteException ex) {
-            Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (AlreadyBoundException ex) {
-            Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (MalformedURLException ex) {
+        } catch (RemoteException | AlreadyBoundException | MalformedURLException ex) {
             Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
