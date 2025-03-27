@@ -23,10 +23,19 @@ public class SistemaVotos {
             @Override
             public void receive(Message msg) {
                 try {
-                    VoteMessage voteMessage = (VoteMessage) msg.getObject();
-                    System.out.println("Voto recibido: " + voteMessage.getOptions());
-                    votes.put(voteMessage.getOptions(), votes.getOrDefault(voteMessage.getOptions(), 0) + 1);
-                    showResults();
+                    Object receivedObject = msg.getObject();
+                    if (receivedObject instanceof VoteMessage) {
+                        VoteMessage voteMessage = (VoteMessage) receivedObject;
+                        System.out.println("Votación iniciada: " + voteMessage.getQuestion());
+                        for (String option : voteMessage.getOptions()) {
+                            votes.put(option.trim(), 0);
+                        }
+                        System.out.println("Opciones disponibles: " + String.join(", ", voteMessage.getOptions()));
+                    } else if (receivedObject instanceof VoteResult) {
+                        VoteResult voteResult = (VoteResult) receivedObject;
+                        votes.put(voteResult.getOption(), votes.getOrDefault(voteResult.getOption(), 0) + 1);
+                        showResults();
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -50,6 +59,7 @@ public class SistemaVotos {
             startVoting(scanner);
         } else {
             System.out.println("Esperando votación...");
+            castVote(scanner);
         }
     }
 
@@ -73,6 +83,34 @@ public class SistemaVotos {
             channel.send(message);
 
             System.out.println("Votación iniciada. Esperando votos...");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void castVote(Scanner scanner) {
+        System.out.println("Espera a que inicie la votación para participar...");
+        while (votes.isEmpty()) {
+            // Esperar hasta que las opciones de votación estén disponibles
+        }
+
+        System.out.println("Seleccione una opción para votar: ");
+        int i = 1;
+        for (String option : votes.keySet()) {
+            System.out.println(i + ". " + option);
+            i++;
+        }
+
+        int selectedOptionIndex = scanner.nextInt();
+        String selectedOption = (String) votes.keySet().toArray()[selectedOptionIndex - 1];
+
+        try {
+            // Enviar el voto al grupo
+            VoteResult voteResult = new VoteResult(selectedOption);
+            Message message = new Message(null, voteResult);
+            channel.send(message);
+
+            System.out.println("Has votado por: " + selectedOption);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -120,5 +158,19 @@ class VoteMessage implements Serializable {
                 + "question='" + question + '\''
                 + ", options=" + String.join(", ", options)
                 + '}';
+    }
+}
+
+// Clase para representar un voto emitido
+class VoteResult implements Serializable {
+
+    private final String option;
+
+    public VoteResult(String option) {
+        this.option = option;
+    }
+
+    public String getOption() {
+        return option;
     }
 }
