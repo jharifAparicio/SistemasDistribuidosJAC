@@ -141,3 +141,28 @@ nb-configuration.xml
 /EjerciciosEnClases/Ejercicio_5/nbproject/private/
 /EjerciciosEnClases/EjercicioPrimerParcial/nbproject/private/
 /Parciales/PagosRUAT/nbproject/private/
+
+
+
+
+# gitignore para composer php
+# Composer dependencies
+**/*/vendor/
+
+# Composer PHAR
+**/**/composer.phar
+
+# Composer lock file (opcional ignorarlo, pero no se recomienda)
+# composer.lock
+
+# IDEs
+/.idea/
+/.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs y caché
+*.log
+*.cache
