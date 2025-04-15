@@ -166,3 +166,61 @@ Thumbs.db
 # Logs y caché
 *.log
 *.cache
+
+
+# Compilados binarios y temporales
+**/bin/
+**/obj/
+**/out/
+**/TestResults/
+**/artifacts/
+
+# Archivos de usuario de Visual Studio
+**/*.user
+**/*.suo
+**/*.userosscache
+**/*.sln.docstates
+**/.vs/
+
+# Logs y archivos temporales
+**/*.log
+**/*.tmp
+
+# Archivos generados por el sistema
+**/*.dbmdl
+**/*.pdb
+
+# Configuraciones de entornos de desarrollo
+**/.idea/
+**/.vscode/
+**/_ReSharper*/
+**/*.resharper
+**/*.sln.iml
+**/*.dotCover
+
+# Paquetes y dependencias
+**/packages/
+**/*.nupkg
+**/*.snupkg
+**/*.nuspec
+**/*.psmdcp
+
+# Archivos de configuración de PowerShell
+**/*.ps1
+**/*.ps1xml
+
+# Archivos relacionados con control de código fuente
+**/*.vspscc
+**/*.vssscc
+
+# Configs de entorno y secretos
+**/docker-compose.override.yml
+**/.env
+**/secrets.json
+**/appsettings.Development.json
+**/appsettings.*.local.json
+
+# Cobertura y resultados de pruebas
+**/*.coverage
+**/*.coveragexml
+**/*.testresults
