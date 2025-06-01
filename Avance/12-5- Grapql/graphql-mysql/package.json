@@ -1,0 +1,19 @@
+{
+  "name": "graphql-mysql",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "mkdir graphql-mysql cd graphql-mysql npm init -y npm install express graphql express-graphql mysql2 sequelize node server.js  #consultas",
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-graphql": "^0.12.0",
+    "mysql2": "^3.9.7",
+    "sequelize": "^6.37.3"
+  }
+}
