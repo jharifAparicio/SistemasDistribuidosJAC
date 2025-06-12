@@ -12,16 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('facturas', function (Blueprint $table) {
-            $table->id();
+            $table->increments('nroFactura'); // ID autoincremental
             // Empresa, NroFactura,CI,
             //NombreCompleto, Periodo, Monto,Estado (Pendiente,Pagado)
-            $table->string('empresa');
-            $table->string('nro_factura')->unique();
-            $table->String("CI");
-            $table->String('NombreCompleto');
-            $table->String("Periodo");
-            $table->double('Monto', 8, 2);
-            $table->enum('Estado', ['Pendiente', 'Pagado'])->default('Pendiente');
+            $table->string('empresa')->default("CESSA");
+            $table->string('ci');
+            $table->string('nombreCompleto');
+            $table->string('periodo');
+            $table->double('monto', 8, 2);
+            $table->enum('estado', ['Pendiente', 'Pagado'])->default('Pendiente');
             $table->timestamps();
         });
     }

@@ -11,11 +11,11 @@ class Factura extends Model
     use HasFactory;
     protected $fillable = [
         'empresa',
-        'nro_factura',
-        'CI',
-        'NombreCompleto',
-        'Periodo',
-        'Monto',
-        'Estado',
+        'nroFactura',
+        'ci',
+        'nombreCompleto',
+        'periodo',
+        'monto',
+        'estado',
     ];
 }

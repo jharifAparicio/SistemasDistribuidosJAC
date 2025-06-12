@@ -4,7 +4,7 @@ const db = require('../config/db');
 exports.obtenerFacturasPorCi = (req, res) => {
     const ci = req.params.id;
 
-    const query = 'SELECT * FROM facturas WHERE ci_cliente = ?';
+    const query = 'SELECT * FROM facturas WHERE ci = ?';
     db.query(query, [ci], (err, results) => {
         if (err) return res.status(500).json({ error: err.message });
 
@@ -20,7 +20,7 @@ exports.obtenerFacturasPorCi = (req, res) => {
 exports.pagarFactura = (req, res) => {
     const idFactura = req.params.id;
 
-    const query = 'UPDATE facturas SET estado = "pagado" WHERE id = ?';
+    const query = 'UPDATE facturas SET estado = "Pagado" WHERE nrofactura = ?';
     db.query(query, [idFactura], (err, result) => {
         if (err) return res.status(500).json({ error: err.message });
 

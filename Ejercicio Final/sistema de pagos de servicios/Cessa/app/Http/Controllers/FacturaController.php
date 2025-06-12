@@ -20,15 +20,15 @@ class FacturaController extends Controller
     }
 
     // PUT /facturas/{id} → Pagar una factura por su nro_factura
-    public function pagarFactura($nro_factura)
+    public function pagarFactura($nrofactura)
     {
-        $factura = Factura::where('nro_factura', $nro_factura)->first();
+        $factura = Factura::where('nroFactura', $nrofactura)->first();
 
         if (!$factura) {
             return response()->json(['mensaje' => 'Factura no encontrada'], 404);
         }
 
-        $factura->estado = 'pagado';
+        $factura->estado = 'Pagado';
         $factura->save();
 
         return response()->json(['mensaje' => 'Factura pagada correctamente'], 200);
